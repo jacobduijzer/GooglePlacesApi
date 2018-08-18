@@ -5,15 +5,15 @@ namespace GooglePlacesApi.Abstractions.Models
     public class GoogleApiQueryStringParameters
     {
         [AliasAs("key")]
-        public string ApiKey { get; private set; }
+        public string ApiKey { get; set; }
 
         [AliasAs("language")]
-        public string Language { get; private set; }
+        public string Language { get; set; }
 
-        public GoogleApiQueryStringParameters(string apiKey, string language)
-        {
-            ApiKey = apiKey;
-            Language = language;
-        }
+        [AliasAs("components")]
+        public string Country { get; set; }
+
+        [AliasAs("types")]
+        public string PlaceType { get; set; }
     }
 }

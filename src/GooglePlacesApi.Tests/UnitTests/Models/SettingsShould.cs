@@ -3,6 +3,7 @@ using FluentAssertions;
 using GooglePlacesApi.Abstractions.Models;
 using Xunit;
 using GooglePlacesApi.Loggers;
+using GooglePlacesApi.Abstractions.Models.GoogleApi;
 
 namespace GooglePlacesApi.Tests.UnitTests.Models
 {
@@ -20,18 +21,6 @@ namespace GooglePlacesApi.Tests.UnitTests.Models
             settings.ApiKey
                     .Should()
                     .Be("testkey");
-
-            settings.Language
-                    .Should()
-                    .Be(Constants.DEFAULT_LANGUAGE);
-
-            settings.Countries
-                    .Should()
-                    .NotBeNullOrEmpty()
-                    .And
-                    .HaveCount(1)
-                    .And
-                    .Contain(Constants.DEFAULT_COUNTRY);
         }
 
         [Fact]
@@ -41,14 +30,13 @@ namespace GooglePlacesApi.Tests.UnitTests.Models
                                             .WithApiKey("testkey")
                                             .WithLanguage("nl")
                                             .Build();
-
-            settings.Language
-                    .Should()
-                    .Be("nl");
-            
             settings.ApiKey
                     .Should()
                     .Be("testkey");
+            
+            settings.Language
+                    .Should()
+                    .Be("nl");
         }
 
         [Fact]
@@ -73,19 +61,15 @@ namespace GooglePlacesApi.Tests.UnitTests.Models
         {
             var settings = GoogleApiSettings.Builder
                                             .WithApiKey("testkey")
-                                            .WithTypes("regions")
+                                            .WithType(PlaceTypes.GeoCode)
                                             .Build();
-            settings.Types
-                    .Should()
-                    .Be("regions");
-
             settings.ApiKey
                     .Should()
                     .Be("testkey");
-
-            settings.Language
+            
+            settings.PlaceType
                     .Should()
-                    .Be(Constants.DEFAULT_LANGUAGE);
+                    .Be(PlaceTypes.GeoCode);
         }
 
         [Fact]
@@ -94,20 +78,19 @@ namespace GooglePlacesApi.Tests.UnitTests.Models
             var settings = GoogleApiSettings.Builder
                                             .WithApiKey("testkey")
                                             .WithLanguage("nl")
-                                            .WithTypes("regions")
+                                            .WithType(PlaceTypes.GeoCode)
                                             .Build();
-
+            settings.ApiKey
+                    .Should()
+                    .Be("testkey");
+            
             settings.Language
                     .Should()
                     .Be("nl");
 
-            settings.Types
+            settings.PlaceType
                     .Should()
-                    .Be("regions");
-
-            settings.ApiKey
-                    .Should()
-                    .Be("testkey");
+                    .Be(PlaceTypes.GeoCode);
         }
 
         [Fact]
@@ -116,7 +99,7 @@ namespace GooglePlacesApi.Tests.UnitTests.Models
             var settings = GoogleApiSettings.Builder
                                             .WithApiKey("testkey")
                                             .WithLanguage("nl")
-                                            .WithTypes("regions")
+                                            .WithType(PlaceTypes.GeoCode)
                                             .WithLogger(new ConsoleLogger())
                                             .Build();
 
@@ -135,24 +118,6 @@ namespace GooglePlacesApi.Tests.UnitTests.Models
             action.Should()
                   .Throw<InvalidOperationException>()
                   .WithMessage("Set an api key first");
-        }
-
-        [Fact]
-        public void GenerateQueryString()
-        {
-            var settings = GoogleApiSettings.Builder
-                                            .WithApiKey("testkey")
-                                            .WithLanguage("nl")
-                                            .WithTypes("regions")
-                                            .Build();
-            //settings.GetApiQueryString()
-                    //.Should()
-                    //.Be("Key=testkey&language=nl&components=country:nl&types=(regions)");
-
-            //key ={ apiKey}
-            //&language = nl & components = country:nl | country:be & types = (regions) &
-
-
         }
     }
 }

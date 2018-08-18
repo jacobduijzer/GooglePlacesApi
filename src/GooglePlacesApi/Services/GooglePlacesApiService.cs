@@ -5,6 +5,7 @@ using GooglePlacesApi.Abstractions.Models;
 using GooglePlacesApi.Extensions;
 using GooglePlacesApi.Handlers;
 using Refit;
+using System;
 
 namespace GooglePlacesApi
 {
@@ -16,6 +17,12 @@ namespace GooglePlacesApi
 
         public GooglePlacesApiService(GoogleApiSettings settings) 
         {
+            if (settings == null)
+                throw new ArgumentNullException(nameof(settings));
+
+            if(string.IsNullOrEmpty(settings.ApiKey))
+                throw new ArgumentNullException(nameof(settings.ApiKey));
+
             _settings = settings;
 
             var refitSettings = new RefitSettings();
@@ -26,8 +33,14 @@ namespace GooglePlacesApi
             _api = RestService.For<IGooglePlacesApi>(Constants.BASE_API_URL, refitSettings);
         }
         public async Task<Predictions> GetPredictionsAsync(string searchText)
-        => await _api.GetAutocompleteAsync(searchText, _settings.CreateQueryStringParameters())
+        {
+            if (string.IsNullOrEmpty(searchText))
+                throw new ArgumentNullException(searchText);
+
+            return await _api.GetAutocompleteAsync(searchText, _settings.CreateQueryStringParameters())
                                  .ConfigureAwait(false);
+        }
+
 
         public Task<Predictions> GetPredictionsAsync()
         {

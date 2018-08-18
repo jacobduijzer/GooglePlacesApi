@@ -5,6 +5,7 @@ using GooglePlacesApi.Abstractions.Models;
 using GooglePlacesApi.Tests.Helpers;
 using Xunit.Abstractions;
 using GooglePlacesApi.Abstractions.Interfaces;
+using GooglePlacesApi.Abstractions.Models.GoogleApi;
 
 namespace GooglePlacesApi.Tests.IntegrationTests
 {
@@ -21,6 +22,7 @@ namespace GooglePlacesApi.Tests.IntegrationTests
             var settings = GoogleApiSettings.Builder
                                             .WithApiKey(Environment.GetEnvironmentVariable("GOOGLE_PLACES_API_KEY"))
                                             .WithLogger(_refitLogger)
+                                            .WithType(PlaceTypes.GeoCode)
                                             .Build();
 
             var service = new GooglePlacesApiService(settings);
