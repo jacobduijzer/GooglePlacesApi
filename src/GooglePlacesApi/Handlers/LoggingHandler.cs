@@ -9,7 +9,7 @@ namespace GooglePlacesApi.Handlers
 {
     public class LoggingHandler : DelegatingHandler
     {
-        private IRefitLogger _logger;
+        private readonly IRefitLogger _logger;
 
         public LoggingHandler(HttpMessageHandler innerHandler)
             : base(innerHandler)

@@ -21,7 +21,7 @@ namespace GooglePlacesApi
                 throw new ArgumentNullException(nameof(settings));
 
             if(string.IsNullOrEmpty(settings.ApiKey))
-                throw new ArgumentNullException(nameof(settings.ApiKey));
+                throw new InvalidOperationException("ApiKey must be set");
 
             _settings = settings;
 

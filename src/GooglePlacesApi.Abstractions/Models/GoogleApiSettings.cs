@@ -30,7 +30,7 @@ namespace GooglePlacesApi.Abstractions.Models
             private string _apiKey;
             private string _language;
             private PlaceTypes _type;
-            private List<string> _countries = new List<string>();
+            private readonly List<string> _countries = new List<string>();
             private IRefitLogger _logger;
 
             public SettingsBuilder WithApiKey(string apiKey)
