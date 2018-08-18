@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.5</TargetFramework>
+    <Authors>Jacob Duijzer</Authors>
+    <Product>GooglePlacesApi</Product>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Summary>Basic plugin the Google Places Api</Summary>
+    <Description>Mvvmcross plugin to easily cross style fonts and colors</Description>
+    <PackageProjectUrl>https://github.com/jacobduijzer/GooglePlacesApi</PackageProjectUrl>
+    <PackageTags>google places api</PackageTags>
+    <RepositoryUrl>https://github.com/jacobduijzer/GooglePlacesApi</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'IntegrationTest|AnyCPU' ">
