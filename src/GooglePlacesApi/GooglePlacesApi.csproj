@@ -8,7 +8,7 @@
     <Summary>Basic plugin the Google Places Api</Summary>
     <Description>Plugin for using the Google Places Api with C#</Description>
     <PackageProjectUrl>https://github.com/jacobduijzer/GooglePlacesApi</PackageProjectUrl>
-    <PackageTags>google places api</PackageTags>
+    <PackageTags>GooglePlaces C# Places Api</PackageTags>
     <RepositoryUrl>https://github.com/jacobduijzer/GooglePlacesApi</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GooglePlacesApi.Abstractions.Interfaces;
 using GooglePlacesApi.Abstractions.Models.GoogleApi;
+using System.Linq;
 
 namespace GooglePlacesApi.Abstractions.Models
 {
@@ -35,7 +36,7 @@ namespace GooglePlacesApi.Abstractions.Models
 
             public SettingsBuilder WithApiKey(string apiKey)
             {
-                if (string.IsNullOrEmpty(apiKey))
+                if (string.IsNullOrWhiteSpace(apiKey))
                     throw new ArgumentNullException(nameof(apiKey));
 
                 _apiKey = apiKey;
@@ -44,10 +45,10 @@ namespace GooglePlacesApi.Abstractions.Models
 
             public SettingsBuilder WithLanguage(string language)
             {
-                if (string.IsNullOrEmpty(language))
+                if (string.IsNullOrWhiteSpace(language))
                     throw new ArgumentNullException(nameof(language));
 
-                _language = language;
+                _language = language.Trim();
                 return this;
             }
 
@@ -60,12 +61,15 @@ namespace GooglePlacesApi.Abstractions.Models
 
             public SettingsBuilder AddCountry(string country)
             {
-                if (string.IsNullOrEmpty(country))
+                if (string.IsNullOrWhiteSpace(country))
                     throw new ArgumentNullException(nameof(country));
 
                 if (_countries.Count == 5)
                     throw new InvalidOperationException("You can not add more than 5 countries.");
 
+                if(_countries.Any(x => x.Equals(country)))
+                    throw new InvalidOperationException("This country already exists.");
+                
                 _countries.Add(country);
                 return this;
             }
@@ -78,7 +82,7 @@ namespace GooglePlacesApi.Abstractions.Models
 
             public GoogleApiSettings Build()
             {
-                if (string.IsNullOrEmpty(_apiKey))
+                if (string.IsNullOrWhiteSpace(_apiKey))
                     throw new InvalidOperationException("Set an api key first");
 
                 return new GoogleApiSettings
