@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using FluentAssertions;
-using GooglePlacesApi.Abstractions.Models;
+using GooglePlacesApi.Interfaces;
+using GooglePlacesApi.Models;
 using GooglePlacesApi.Tests.Helpers;
 using Xunit.Abstractions;
-using GooglePlacesApi.Abstractions.Interfaces;
-using GooglePlacesApi.Abstractions.Models.GoogleApi;
 
 namespace GooglePlacesApi.Tests.IntegrationTests
 {

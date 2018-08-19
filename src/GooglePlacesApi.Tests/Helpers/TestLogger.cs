@@ -1,4 +1,4 @@
-﻿using GooglePlacesApi.Abstractions.Interfaces;
+﻿using GooglePlacesApi.Interfaces;
 using Xunit.Abstractions;
 
 namespace GooglePlacesApi.Tests.Helpers

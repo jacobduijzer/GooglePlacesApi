@@ -1,9 +1,8 @@
 ﻿using System;
 using FluentAssertions;
-using GooglePlacesApi.Abstractions.Models;
-using Xunit;
 using GooglePlacesApi.Loggers;
-using GooglePlacesApi.Abstractions.Models.GoogleApi;
+using GooglePlacesApi.Models;
+using Xunit;
 
 namespace GooglePlacesApi.Tests.UnitTests.Models
 {

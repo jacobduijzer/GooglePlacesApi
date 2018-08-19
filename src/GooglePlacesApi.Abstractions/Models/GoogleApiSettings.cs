@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using GooglePlacesApi.Abstractions.Interfaces;
-using GooglePlacesApi.Abstractions.Models.GoogleApi;
 using System.Linq;
+using GooglePlacesApi.Interfaces;
 
-namespace GooglePlacesApi.Abstractions.Models
+namespace GooglePlacesApi.Models
 {
     public class GoogleApiSettings
     {

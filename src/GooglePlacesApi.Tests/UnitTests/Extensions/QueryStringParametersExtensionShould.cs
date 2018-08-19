@@ -1,6 +1,6 @@
 ﻿using FluentAssertions;
-using GooglePlacesApi.Abstractions.Models;
 using GooglePlacesApi.Extensions;
+using GooglePlacesApi.Models;
 using Xunit;
 
 namespace GooglePlacesApi.Tests.UnitTests.Extensions
@@ -71,6 +71,26 @@ namespace GooglePlacesApi.Tests.UnitTests.Extensions
             queryParams.Country
                        .Should()
                        .Be("country:nl|country:de|country:be");
+        }
+
+        [Theory]
+        [InlineData(PlaceTypes.Address, "address")]
+        [InlineData(PlaceTypes.Cities, "(cities)")]
+        [InlineData(PlaceTypes.Establishment, "establishment")]
+        [InlineData(PlaceTypes.GeoCode, "geocode")]
+        [InlineData(PlaceTypes.Regions, "(regions)")]
+        public void ReturnCorrectType(PlaceTypes type, string expectedResult)
+        {
+            var settings = GoogleApiSettings.Builder
+                                            .WithApiKey("test")
+                                            .WithType(type)
+                                            .Build();
+
+            var queryParams = settings.CreateQueryStringParameters();
+
+            queryParams.PlaceType
+                       .Should()
+                       .Be(expectedResult);
         }
     }
 }

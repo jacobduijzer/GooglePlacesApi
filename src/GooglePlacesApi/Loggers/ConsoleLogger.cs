@@ -1,5 +1,5 @@
 ﻿using System;
-using GooglePlacesApi.Abstractions.Interfaces;
+using GooglePlacesApi.Interfaces;
 
 namespace GooglePlacesApi.Loggers
 {

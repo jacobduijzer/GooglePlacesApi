@@ -1,11 +1,11 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
-using GooglePlacesApi.Abstractions.Interfaces;
-using GooglePlacesApi.Abstractions.Models;
 using GooglePlacesApi.Extensions;
 using GooglePlacesApi.Handlers;
+using GooglePlacesApi.Interfaces;
+using GooglePlacesApi.Models;
 using Refit;
-using System;
 
 namespace GooglePlacesApi
 {
@@ -34,8 +34,8 @@ namespace GooglePlacesApi
         }
         public async Task<Predictions> GetPredictionsAsync(string searchText)
         {
-            if (string.IsNullOrEmpty(searchText))
-                throw new ArgumentNullException(searchText);
+            if (string.IsNullOrWhiteSpace(searchText))
+                throw new ArgumentNullException(nameof(searchText));
 
             return await _api.GetAutocompleteAsync(searchText, _settings.CreateQueryStringParameters())
                                  .ConfigureAwait(false);

@@ -1,7 +1,8 @@
-﻿using FluentAssertions;
-using GooglePlacesApi.Abstractions.Models;
+﻿using System;
+using FluentAssertions;
+using GooglePlacesApi.Models;
 using Xunit;
-using System;
+using System.Threading.Tasks;
 
 namespace GooglePlacesApi.Tests.UnitTests.Service
 {
@@ -26,5 +27,19 @@ namespace GooglePlacesApi.Tests.UnitTests.Service
             action.Should()
                   .Throw<ArgumentNullException>();
         }
+
+        [Theory]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData(null)]
+        public void ThrowWhenSearchTextIsNullOrEmpty(string input)
+        {
+            var service = new GooglePlacesApiService(GoogleApiSettings.Builder.WithApiKey("testkey").Build());
+            var action = new Func<Task>(async() => await service.GetPredictionsAsync(input));
+            action.Should()
+                  .Throw<ArgumentNullException>()
+                  .WithMessage($"Value cannot be null.{Environment.NewLine}Parameter name: searchText");
+        }
+
     }
 }

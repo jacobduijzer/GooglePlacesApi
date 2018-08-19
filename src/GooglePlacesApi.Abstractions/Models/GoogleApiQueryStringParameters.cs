@@ -1,6 +1,6 @@
 ﻿using Refit;
 
-namespace GooglePlacesApi.Abstractions.Models
+namespace GooglePlacesApi.Models
 {
     public class GoogleApiQueryStringParameters
     {

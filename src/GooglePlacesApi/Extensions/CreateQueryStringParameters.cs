@@ -1,6 +1,5 @@
 ﻿using System.Linq;
-using GooglePlacesApi.Abstractions.Models;
-using GooglePlacesApi.Abstractions.Models.GoogleApi;
+using GooglePlacesApi.Models;
 
 namespace GooglePlacesApi.Extensions
 {

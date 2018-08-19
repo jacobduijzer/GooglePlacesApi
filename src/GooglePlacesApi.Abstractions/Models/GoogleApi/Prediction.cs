@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace GooglePlacesApi.Abstractions.Models
+namespace GooglePlacesApi.Models
 {
     public class Prediction
     {

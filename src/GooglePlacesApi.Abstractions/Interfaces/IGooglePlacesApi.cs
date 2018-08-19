@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
-using GooglePlacesApi.Abstractions.Models;
+using GooglePlacesApi.Models;
 using Refit;
 
-namespace GooglePlacesApi.Abstractions.Interfaces
+namespace GooglePlacesApi.Interfaces
 {
     public interface IGooglePlacesApi
     {

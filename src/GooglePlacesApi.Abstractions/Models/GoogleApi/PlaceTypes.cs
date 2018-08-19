@@ -1,4 +1,4 @@
-﻿namespace GooglePlacesApi.Abstractions.Models.GoogleApi
+﻿namespace GooglePlacesApi.Models
 {
     public enum PlaceTypes
     {

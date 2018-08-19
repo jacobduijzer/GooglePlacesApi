@@ -1,4 +1,4 @@
-﻿namespace GooglePlacesApi.Abstractions.Interfaces
+﻿namespace GooglePlacesApi.Interfaces
 {
     public interface IRefitLogger
     {

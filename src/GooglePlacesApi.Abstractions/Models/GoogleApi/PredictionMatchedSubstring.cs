@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace GooglePlacesApi.Abstractions.Models
+namespace GooglePlacesApi.Models
 {
     public class PredictionMatchedSubstring
     {

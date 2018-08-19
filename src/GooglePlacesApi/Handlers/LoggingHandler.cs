@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using GooglePlacesApi.Abstractions.Interfaces;
+using GooglePlacesApi.Interfaces;
 using GooglePlacesApi.Loggers;
 
 namespace GooglePlacesApi.Handlers
