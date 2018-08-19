@@ -5,6 +5,7 @@ using GooglePlacesApi.Interfaces;
 using GooglePlacesApi.Models;
 using GooglePlacesApi.Tests.Helpers;
 using Xunit.Abstractions;
+using System.Linq;
 
 namespace GooglePlacesApi.Tests.IntegrationTests
 {
@@ -16,7 +17,7 @@ namespace GooglePlacesApi.Tests.IntegrationTests
         => _refitLogger = new TestLogger(output);
 
         [IntegrationTestOnlyFact]
-        public async Task GetResults()
+        public async Task GetPredictionsAsync()
         {
             var settings = GoogleApiSettings.Builder
                                             .WithApiKey(Environment.GetEnvironmentVariable("GOOGLE_PLACES_API_KEY"))
@@ -39,6 +40,31 @@ namespace GooglePlacesApi.Tests.IntegrationTests
             result.Items
                   .Should()
                   .NotBeNullOrEmpty();
+        }
+
+        [IntegrationTestOnlyFact]
+        public async Task GetDetailsAsync()
+        {
+            var settings = GoogleApiSettings.Builder
+                                            .WithApiKey(Environment.GetEnvironmentVariable("GOOGLE_PLACES_API_KEY"))
+                                            .WithLogger(_refitLogger)
+                                            .WithType(PlaceTypes.GeoCode)
+                                            .Build();
+
+            var service = new GooglePlacesApiService(settings);
+
+            var predictions = await service.GetPredictionsAsync("new y")
+                                           .ConfigureAwait(false);
+
+            var details = await service.GetDetailsAsync(predictions.Items.FirstOrDefault().PlaceId)
+                                       .ConfigureAwait(false);
+
+            details.Should()
+                   .NotBeNull();
+
+            details.Place
+                   .Should()
+                   .NotBeNull();
         }
     }
 }

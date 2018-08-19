@@ -10,6 +10,6 @@ namespace GooglePlacesApi.Interfaces
         Task<Predictions> GetAutocompleteAsync(string input, GoogleApiQueryStringParameters queryStringParameters);
 
         [Get("/maps/api/place/details/json?key={apiKey}&placeid={placeId}")]
-        Task<Details> GetDetailsAsync(string placeId, string apiKey);
+        Task<Details> GetDetailsAsync(string apiKey, string placeId);
     }
 }

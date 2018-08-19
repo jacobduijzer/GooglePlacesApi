@@ -41,5 +41,18 @@ namespace GooglePlacesApi.Tests.UnitTests.Service
                   .WithMessage($"Value cannot be null.{Environment.NewLine}Parameter name: searchText");
         }
 
+        [Theory]
+        [InlineData("")]
+        [InlineData(" ")]
+        [InlineData(null)]
+        public void ThrowWhenPlaceIdIsNullOrEmpty(string input)
+        {
+            var service = new GooglePlacesApiService(GoogleApiSettings.Builder.WithApiKey("testkey").Build());
+            var action = new Func<Task>(async () => await service.GetDetailsAsync(input));
+            action.Should()
+                  .Throw<ArgumentNullException>()
+                  .WithMessage($"Value cannot be null.{Environment.NewLine}Parameter name: placeId");
+        }
+
     }
 }

@@ -42,9 +42,13 @@ namespace GooglePlacesApi
         }
 
 
-        public Task<Predictions> GetPredictionsAsync()
+        public async Task<Details> GetDetailsAsync(string placeId)
         {
-            throw new System.NotImplementedException();
+            if (string.IsNullOrWhiteSpace(placeId))
+                throw new ArgumentNullException(nameof(placeId));
+
+            return await _api.GetDetailsAsync(_settings.ApiKey, placeId)
+                             .ConfigureAwait(false);
         }
     }
 }

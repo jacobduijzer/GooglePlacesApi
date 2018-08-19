@@ -10,7 +10,7 @@ namespace GooglePlacesApi.Models
         public string Description { get; set; }
 
         [JsonProperty("place_id")]
-        public string Place_id { get; set; }
+        public string PlaceId { get; set; }
 
         [JsonProperty("reference")]
         public string Reference { get; set; }
