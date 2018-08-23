@@ -10,6 +10,7 @@
     <PackageProjectUrl>https://github.com/jacobduijzer/GooglePlacesApi</PackageProjectUrl>
     <PackageTags>GooglePlaces C# Places Api</PackageTags>
     <RepositoryUrl>https://github.com/jacobduijzer/GooglePlacesApi</RepositoryUrl>
+    <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
@@ -22,6 +23,17 @@
     <NoWarn></NoWarn>
     <NoStdLib>false</NoStdLib>
   </PropertyGroup>
+    
+    <PropertyGroup>
+        <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);IncludeAbstractionsDll</TargetsForTfmSpecificBuildOutput>
+    </PropertyGroup>
+    
+    <Target Name="IncludeAbstractionsDll">
+        <ItemGroup>
+            <BuildOutputInPackage Include="bin\$(Configuration)\netstandard1.5\GooglePlacesApi.Abstractions.dll" />
+        </ItemGroup>
+    </Target>
+    
   <ItemGroup>
     <PackageReference Include="Refit" Version="4.5.6" />
   </ItemGroup>
@@ -37,4 +49,5 @@
   <ItemGroup>
     <ProjectReference Include="..\GooglePlacesApi.Abstractions\GooglePlacesApi.Abstractions.csproj" />
   </ItemGroup>
+    
 </Project>
