@@ -3,6 +3,7 @@ using FluentAssertions;
 using GooglePlacesApi.Loggers;
 using GooglePlacesApi.Models;
 using Xunit;
+using GooglePlacesApi.Tests.Helpers;
 
 namespace GooglePlacesApi.Tests.UnitTests.Models
 {
@@ -190,6 +191,17 @@ namespace GooglePlacesApi.Tests.UnitTests.Models
             action.Should()
                   .Throw<ArgumentNullException>()
                   .WithMessage($"Value cannot be null.{Environment.NewLine}Parameter name: language");
+        }
+
+        public void test()
+        {
+            var settings = GoogleApiSettings.Builder
+                                            .WithApiKey("api_key")
+                                            .WithLanguage("nl")
+                                            .WithType(PlaceTypes.Address)
+                                            .WithLogger(new ConsoleLogger())
+                                            .AddCountry("nl")
+                                            .Build();
         }
     }
 }

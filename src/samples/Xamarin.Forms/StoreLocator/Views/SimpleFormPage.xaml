@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+             x:Class="StoreLocator.Views.SimpleFormPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" 
+                     Margin="20, 40, 20, 20">
+            <Label Text="Search"/>
+            <Entry Text="{Binding SearchText}" />
+            <Button Text="Search" Command="{Binding DoSearchCommand}" CommandParameter="{Binding CanSearch}" />
+
+            <StackLayout Orientation="Vertical"
+                         IsVisible="{Binding HasResults}">
+                <Label Text="{Binding ResultCount, StringFormat='Results ({0})'}" />    
+                <ListView ItemsSource="{Binding Results}" >
+                    <ListView.Behaviors>
+                        <behaviorsPack:SelectedItemBehavior Command="{Binding SelectItemCommand}" />
+                    </ListView.Behaviors>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label Text="{Binding Description}" />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <StackLayout>
+                    <Image Source="powered_by_google_on_white" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

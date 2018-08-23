@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:vm="clr-namespace:Untiled.ViewModels" 
+             x:Class="StoreLocator.Views.StartPage">
+    
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical"
+                     HorizontalOptions="CenterAndExpand"
+                     VerticalOptions="CenterAndExpand">
+
+            <Button Text="Simple API Demo" 
+                    Command="{Binding ShowSimpleVersionCommand}"
+                    CommandParameter="{Binding CanSearch}" />
+
+            <Button Text="Reactive, Throttled store locator" 
+                    Command="{Binding ShowStoreLocatorCommand}" />
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

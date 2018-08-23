@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:behaviorsPack="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+             x:Class="StoreLocator.Views.StoreLocatorPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" >
+
+            <SearchBar Text="{Binding SearchText}" 
+                       BackgroundColor="White" 
+                       Placeholder="Search" />
+            
+            <Grid>
+            
+                <!--- Store list -->
+                <StackLayout Orientation="Vertical"
+                             Grid.Row="0"
+                             >
+                    
+                    <ListView ItemsSource="{Binding Stores}" 
+                              HasUnevenRows="true">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Vertical" Margin="20" 
+                                                 HorizontalOptions="FillAndExpand" > 
+                                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                                            <Label Text="{Binding Store.Name}"
+                                                   HorizontalOptions="FillAndExpand"
+                                                   FontSize="18"/>    
+                                            <Label Text="{Binding Distance, StringFormat='{0:0} km'}" 
+                                                   FontSize="12"
+                                                   HorizontalTextAlignment="End"/> 
+                                        </StackLayout>
+                                        <Label Text="{Binding Store.City}" FontSize="12" TextColor="Coral" />
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <!-- Places overlay -->
+                <StackLayout Orientation="Vertical" 
+                             Grid.Row="0"
+                             IsVisible="{Binding HasResults}"
+                             BackgroundColor="LightSlateGray">
+                
+                    <RelativeLayout HorizontalOptions="FillAndExpand" 
+                                    VerticalOptions="FillAndExpand"
+                                    >
+
+                        <!-- autocomplete search list -->
+                        <StackLayout Orientation="Vertical" 
+                                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1, Constant=0}" >
+
+                            <ListView ItemsSource="{Binding GoogleSearchResult}" 
+                                      HasUnevenRows="true"
+                                      RowHeight="40"
+                                      HeightRequest="{Binding Height}"
+                                      BackgroundColor="LightSlateGray"
+                                      >
+                                <ListView.Behaviors>
+                                    <behaviorsPack:SelectedItemBehavior Command="{Binding SelectGoogleItemCommand}" />
+                                </ListView.Behaviors>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                                <Label Text="{Binding Description}" VerticalTextAlignment="Center" VerticalOptions="Center" Margin="10"/>    
+                                           
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+
+                                <ListView.Footer>
+                                    <Image Source="powered_by_google_on_white" HorizontalOptions="End" Margin="0, 0, 10, 5"/>
+                                </ListView.Footer>
+                            </ListView>
+                        </StackLayout>
+                    
+                    </RelativeLayout>
+                </StackLayout>  
+
+            </Grid>
+
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

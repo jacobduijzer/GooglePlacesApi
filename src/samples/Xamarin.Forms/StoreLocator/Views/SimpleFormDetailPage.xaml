@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="StoreLocator.Views.SimpleFormDetailPage">
+    <ContentPage.Content>
+
+        <StackLayout Orientation="Vertical" 
+                     Margin="20, 40, 20, 20">
+
+            <Image Source="{Binding Details.Place.Icon}"/>
+            
+            <Label Text="{Binding Details.Place.Name, StringFormat='Name: {0}'}"/>
+            <Label Text="{Binding Details.Place.Geometry.Location.Latitude, StringFormat='Latitude: {0}'}"/>
+            <Label Text="{Binding Details.Place.Geometry.Location.Longitude, StringFormat='Longitude: {0}'}"/>
+            <Label Text="{Binding Details.Place.FormattedAddress, StringFormat='FormattedAddress: {0}'}"/>
+            
+            <StackLayout>
+                <Image Source="powered_by_google_on_white" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -32,9 +32,9 @@
     <Folder Include="Loggers\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GooglePlacesApi.Abstractions\GooglePlacesApi.Abstractions.csproj" />
+    <Compile Remove="Helpers\RefitSettingsFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Helpers\RefitSettingsFactory.cs" />
+    <ProjectReference Include="..\GooglePlacesApi.Abstractions\GooglePlacesApi.Abstractions.csproj" />
   </ItemGroup>
 </Project>

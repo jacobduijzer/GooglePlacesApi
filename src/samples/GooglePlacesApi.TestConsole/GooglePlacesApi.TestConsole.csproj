@@ -25,7 +25,7 @@
     <PackageReference Include="Refit" Version="4.5.6" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GooglePlacesApi.Abstractions\GooglePlacesApi.Abstractions.csproj" />
-    <ProjectReference Include="..\GooglePlacesApi\GooglePlacesApi.csproj" />
+    <ProjectReference Include="..\..\GooglePlacesApi\GooglePlacesApi.csproj" />
+    <ProjectReference Include="..\..\GooglePlacesApi.Abstractions\GooglePlacesApi.Abstractions.csproj" />
   </ItemGroup>
 </Project>

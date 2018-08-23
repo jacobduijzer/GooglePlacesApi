@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Threading.Tasks;
-using GooglePlacesApi.Models;
-using System.Runtime.CompilerServices;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace GooglePlacesApi.TestConsole
 {
@@ -10,10 +8,10 @@ namespace GooglePlacesApi.TestConsole
     {
         static async Task Main(string[] args)
         {
-            var settings = GoogleApiSettings.Builder
-                                            .WithApiKey(Environment.GetEnvironmentVariable("GOOGLE_PLACES_API_KEY"))
-                                            .WithType(PlaceTypes.GeoCode)
-                                            .Build();
+            var settings = GooglePlacesApi.Models.GoogleApiSettings.Builder
+                                          .WithApiKey(Environment.GetEnvironmentVariable("GOOGLE_PLACES_API_KEY"))
+                                          .WithType(GooglePlacesApi.Models.PlaceTypes.GeoCode)
+                                          .Build();
 
             var service = new GooglePlacesApiService(settings);
 
