@@ -25,12 +25,9 @@
     <PackageReference Include="TeamCity.VSTest.TestAdapter" Version="1.0.10" />
     <PackageReference Include="coverlet.msbuild" Version="2.2.1" />
     <PackageReference Include="Moq" Version="4.9.0" />
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\GooglePlacesApi\GooglePlacesApi.csproj" />
-    <ProjectReference Include="..\GooglePlacesApi.Abstractions\GooglePlacesApi.Abstractions.csproj" />
-  </ItemGroup>
   <ItemGroup>
     <Folder Include="UnitTests\" />
     <Folder Include="IntegrationTests\" />
@@ -38,5 +35,9 @@
     <Folder Include="UnitTests\Service\" />
     <Folder Include="Helpers\" />
     <Folder Include="UnitTests\Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GooglePlacesApi\GooglePlacesApi.csproj" />
+    <ProjectReference Include="..\GooglePlacesApi.Abstractions\GooglePlacesApi.Abstractions.csproj" />
   </ItemGroup>
 </Project>

@@ -30,12 +30,13 @@
     
     <Target Name="IncludeAbstractionsDll">
         <ItemGroup>
-            <BuildOutputInPackage Include="bin\$(Configuration)\netstandard1.5\GooglePlacesApi.Abstractions.dll" />
+            <BuildOutputInPackage Include="$(OutputPath)\GooglePlacesApi.Abstractions.dll" />
         </ItemGroup>
     </Target>
     
   <ItemGroup>
     <PackageReference Include="Refit" Version="4.5.6" />
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -47,7 +48,10 @@
     <Compile Remove="Helpers\RefitSettingsFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GooglePlacesApi.Abstractions\GooglePlacesApi.Abstractions.csproj" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\GooglePlacesApi.Abstractions\GooglePlacesApi.Abstractions.csproj" />
   </ItemGroup>
-    
+    <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 </Project>
