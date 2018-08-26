@@ -2,7 +2,7 @@
 
 # GooglePlacesApi
 
-This plugin makes it very easy to use the Google Places API. Please read my blog for the nitty-gritty details.
+This plugin makes it very easy to use the Google Places API. Please read my [blog](https://blog.duijzer.com/posts/google-places-api/) for the nitty-gritty details.
 
 # Usage
 
