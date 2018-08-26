@@ -10,6 +10,7 @@
     <PackageProjectUrl>https://github.com/jacobduijzer/GooglePlacesApi</PackageProjectUrl>
     <PackageTags>GooglePlaces C# Places Api</PackageTags>
     <RepositoryUrl>https://github.com/jacobduijzer/GooglePlacesApi</RepositoryUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/jacobduijzer/GooglePlacesApi/master/artwork/icon.png</PackageIconUrl>
     <PackOnBuild>true</PackOnBuild>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>

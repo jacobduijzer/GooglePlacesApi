@@ -1,23 +1,43 @@
 # GooglePlacesApi
 
-Still WIP but almost there. Will write more here later.
+This plugin makes it very easy to use the Google Places API. Please read my blog for the nitty-gritty details.
 
-Places API
+# Usage
 
-https://developers.google.com/places/web-service/autocomplete
+The Google Places API needs to be enabled in the [developer console](https://console.cloud.google.com/) and also needs a valid paying account although it can be used without payments, depending of the level of details requested. Read more about billing [here](https://developers.google.com/places/web-service/usage-and-billing). 
 
-enable billing :(
 
-sessiontoken — A random string which identifies an autocomplete session for billing purposes. If this parameter is omitted from an autocomplete request, the request is billed independently. See the pricing sheet for details.
-offset — The position, in the input term, of the last character that the service uses to match predictions. For example, if the input is 'Google' and the offset is 3, the service will match on 'Goo'. The string determined by the offset is matched against the first word in the input term only. For example, if the input term is 'Google abc' and the offset is 3, the service will attempt to match against 'Goo abc'. If no offset is supplied, the service will use the whole term. The offset should generally be set to the position of the text caret.
-location — The point around which you wish to retrieve place information. Must be specified as latitude,longitude.
-radius — The distance (in meters) within which to return place results. Note that setting a radius biases results to the indicated area, but may not fully restrict results to the specified area. See Location Biasing and Location Restrict below.
+1. Create a settings object:
 
-language — The language code, indicating in which language the results should be returned, if possible. 
-Searches are also biased to the selected language; results in the selected language may be given a higher ranking. 
-See the list of supported languages and their codes. Note that we often update supported languages so this list may not be exhaustive. If language is not supplied, the Place Autocomplete service will attempt to use the native language of the domain from which the request is sent.
+```
+var settings = GoogleApiSettings.Builder
+                                            .WithApiKey("api_key")
+                                            .WithLanguage("nl")
+                                            .WithType(PlaceTypes.Address)
+                                            .WithLogger(new ConsoleLogger())
+                                            .AddCountry("nl")
+                                            .Build();
+```
 
-types — The types of place results to return. See Place Types below. If no type is specified, all types will be returned.
-components — A grouping of places to which you would like to restrict your results. Currently, you can use components to filter by up to 5 countries. Countries must be passed as a two character, ISO 3166-1 Alpha-2 compatible country code. For example: components=country:fr would restrict your results to places within France. Multiple countries must be passed as multiple country:XX filters, with the pipe character (|) as a separator. For example: components=country:us|country:pr|country:vi|country:gu|country:mp would restrict your results to places within the United States and its unincorporated organized territories.
+2. Create a service:
 
-strictbounds — Returns only those places that are strictly within the region defined by location and radius. This is a restriction, rather than a bias, meaning that results outside this region will not be returned even if they match the user input.
+```
+var service = new GooglePlacesApiService(settings);
+```
+
+3. Get predictions:
+
+```
+var result = await service.GetPredictionsAsync("new y").ConfigureAwait(false);
+```
+
+4. Get details:
+
+```
+var details = await service.GetDetailsAsync("ChIJOwg_06VPwokRYv534QaPC8g")
+                                      .ConfigureAwait(false);
+```
+
+# Privacy Policy & Terms
+
+Please read the [Google Privact & Terms](https://policies.google.com/terms?hl=en) and [Privacy Policy](https://policies.google.com/privacy) when you want to use this plugin!
