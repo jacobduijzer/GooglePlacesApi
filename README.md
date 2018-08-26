@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/o8vur836rgftafau/branch/master?svg=true)](https://ci.appveyor.com/project/jacobduijzer/googleplacesapi-exe2x/branch/master) [![Nuget status](https://buildstats.info/nuget/GooglePlacesApi?includePreReleases=true)](https://www.nuget.org/packages/GooglePlacesApi/)
+
 # GooglePlacesApi
 
 This plugin makes it very easy to use the Google Places API. Please read my blog for the nitty-gritty details.
