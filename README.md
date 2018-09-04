@@ -1,4 +1,4 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/o8vur836rgftafau/branch/master?svg=true)](https://ci.appveyor.com/project/jacobduijzer/googleplacesapi-exe2x/branch/master) [![Nuget status](https://buildstats.info/nuget/GooglePlacesApi?includePreReleases=true)](https://www.nuget.org/packages/GooglePlacesApi/) [![BuitlWithDot.Net shield](https://builtwithdot.net/project/82/googleplacesapi/badge)](https://builtwithdot.net/project/82/googleplacesapi)
+[![Build status](https://ci.appveyor.com/api/projects/status/o8vur836rgftafau/branch/master?svg=true)](https://ci.appveyor.com/project/jacobduijzer/googleplacesapi-exe2x/branch/master) [![Nuget status](https://buildstats.info/nuget/GooglePlacesApi?includePreReleases=true)](https://www.nuget.org/packages/GooglePlacesApi/) [![CodeFactor](https://www.codefactor.io/repository/github/jacobduijzer/googleplacesapi/badge)](https://www.codefactor.io/repository/github/jacobduijzer/googleplacesapi) [![BuitlWithDot.Net shield](https://builtwithdot.net/project/82/googleplacesapi/badge)](https://builtwithdot.net/project/82/googleplacesapi)
 
 # GooglePlacesApi
 
