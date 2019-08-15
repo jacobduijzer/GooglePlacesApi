@@ -1,5 +1,3 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/o8vur836rgftafau/branch/master?svg=true)](https://www.codefactor.io/repository/github/martijnvanandel/googleplacesapi/badge)](https://www.codefactor.io/repository/github/martijnvanandel/googleplacesapi) [![BuitlWithDot.Net shield]
-
 # GooglePlacesApi
 
 This plugin makes it very easy to use the Google Places API. Please read Jacob Duijzer's [blog](https://blog.duijzer.com/posts/google-places-api/) for the nitty-gritty details.
