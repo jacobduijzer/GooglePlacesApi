@@ -45,7 +45,7 @@ namespace GooglePlacesApi.TestConsole
                 Console.WriteLine(item.Description);
 
 
-                var details = await service.GetDetailsAsync(item.PlaceId)
+                var details = await service.GetDetailsAsync(item.PlaceId, service.GetSessionToken())
                                       .ConfigureAwait(false);
 
                 if (details != null)
