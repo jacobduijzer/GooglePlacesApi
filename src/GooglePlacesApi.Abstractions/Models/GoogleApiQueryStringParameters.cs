@@ -34,6 +34,5 @@ namespace GooglePlacesApi.Models
 
         //[AliasAs("strictbounds")]
         public bool StrictBounds { get; set; }
-
     }
 }

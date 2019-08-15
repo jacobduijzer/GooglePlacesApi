@@ -6,7 +6,6 @@ namespace GooglePlacesApi.Models
 {
     public class PlusCode
     {
-        
         [JsonProperty("open")]
         public string CompoundCode { get; set; }
 

@@ -38,7 +38,7 @@ namespace GooglePlacesApi
             if (_settings.Logger != null)
                 refitSettings.HttpMessageHandlerFactory = () => new LoggingHandler(new HttpClientHandler(), _settings.Logger);
 
-            _api = RestService.For<IGooglePlacesApi>(Constants.BASE_API_URL, refitSettings); ;            
+            _api = RestService.For<IGooglePlacesApi>(Constants.BASE_API_URL, refitSettings);           
         }
         
         public async Task<Predictions> GetPredictionsAsync(string searchText)

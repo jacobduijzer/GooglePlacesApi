@@ -159,7 +159,6 @@ namespace GooglePlacesApi.Models
                     Location = _location,
                     Radius = _radius,
                     StrictBounds = _strictBounds
-
                 };
             }
         }

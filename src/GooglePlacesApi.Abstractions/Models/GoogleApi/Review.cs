@@ -27,4 +27,3 @@ namespace GooglePlacesApi.Models
         public string Time { get; set; }
     }
 }
-

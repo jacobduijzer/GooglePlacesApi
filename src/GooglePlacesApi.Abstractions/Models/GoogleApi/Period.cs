@@ -6,7 +6,6 @@ namespace GooglePlacesApi.Models
 {
     public class Period
     {
-        
         [JsonProperty("open")]
         public PeriodDetail Open { get; set; }
 

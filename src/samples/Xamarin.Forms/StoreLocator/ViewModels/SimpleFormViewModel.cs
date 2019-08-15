@@ -67,8 +67,7 @@ namespace StoreLocator.ViewModels
         {
             var results = await _api.GetPredictionsAsync(SearchText)
                                     .ConfigureAwait(false);
-
-            
+                        
             if(results != null && results.Status.Equals("OK"))
             {
                 ResultCount = results.Items.Count;
