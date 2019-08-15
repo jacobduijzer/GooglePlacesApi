@@ -17,12 +17,12 @@ var settings = GoogleApiSettings.Builder
                                             .WithLanguage("nl")
                                             .WithType(PlaceTypes.Address)
                                             .WithLogger(new ConsoleLogger())
-											.WithDetailLevel(DetailLevel.Basic)
-											.WithSessionToken("YOUR SESSION TOKEN")
+					    .WithDetailLevel(DetailLevel.Basic)
+					    .WithSessionToken("YOUR SESSION TOKEN")
                                             .WithOrigin("lat,lon")
-											.WithLocation("lat,lon")
-											.AddCountry("nl")
-											.Build();
+					    .WithLocation("lat,lon")
+					    .AddCountry("nl")
+					    .Build();
 ```
 
 2. Create a service:
@@ -50,10 +50,10 @@ Stream photoStream = await _api.GetPhotoAsync("CnRtAAAATLZNl354RwP_9UKbQ_5Psy40t
 									  .ConfigureAwait(false);
 ```
 You can choose out of four detail levels, each [billed](https://developers.google.com/places/web-service/usage-and-billing seperately by Google:
-a. DetailLevel.Basic
-b. DetailLevel.Contact (= Basic + Contact)
-c. DetailLevel.Atmosphere (= Basic + Atmosphere)
-d. DetailLevel.Full (= Basic + Contact + Atmosphere)
+a. DetailLevel.Basic  
+b. DetailLevel.Contact (= Basic + Contact)  
+c. DetailLevel.Atmosphere (= Basic + Atmosphere)  
+d. DetailLevel.Full (= Basic + Contact + Atmosphere)  
 
 # Privacy Policy & Terms
 
