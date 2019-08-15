@@ -29,7 +29,11 @@ namespace StoreLocator.ViewModels
         => new Command(async () => await DoSearchAsync().ConfigureAwait(false), () => CanSearch);
 
         public ICommand SelectItemCommand
-        => new Command<Prediction>(async (prediction) => await _navigation.PushAsync(new SimpleFormDetailPage(prediction.PlaceId)).ConfigureAwait(false));
+        => new Command<Prediction>(async (prediction) =>
+        {
+            await _navigation.PushAsync(new SimpleFormDetailPage(prediction.PlaceId, _api.GetSessionToken())).ConfigureAwait(false);
+            _api.ResetSessionToken();
+        });
 
         private string _searchText;
         public string SearchText
@@ -64,6 +68,7 @@ namespace StoreLocator.ViewModels
             var results = await _api.GetPredictionsAsync(SearchText)
                                     .ConfigureAwait(false);
 
+            
             if(results != null && results.Status.Equals("OK"))
             {
                 ResultCount = results.Items.Count;
