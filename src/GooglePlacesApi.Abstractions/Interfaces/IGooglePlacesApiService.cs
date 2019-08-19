@@ -10,7 +10,7 @@ namespace GooglePlacesApi.Interfaces
 
         Task<Details> GetDetailsAsync(string placeId, string sessionToken, DetailLevel detailLevel = DetailLevel.Basic);
 
-        Task<Stream> GetPhotoAsync(string photoReference);
+        Task<Stream> GetPhotoAsync(string photoReference, int maxWidth = 1600, int maxHeight = 1600);
 
         string GetSessionToken();
 

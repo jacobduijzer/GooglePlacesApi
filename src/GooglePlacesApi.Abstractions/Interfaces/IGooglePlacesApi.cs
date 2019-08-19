@@ -13,7 +13,7 @@ namespace GooglePlacesApi.Interfaces
         [Get("/maps/api/place/details/json?key={apiKey}&placeid={placeId}&fields={fields}")]
         Task<Details> GetDetailsAsync(string apiKey, string placeId, string sessionToken, string fields);
 
-        [Get("/maps/api/place/photo?maxwidth=400&photoreference={photoReference}&key={apiKey}")]
-        Task<Stream> GetPhotoAsync(string apiKey, string photoReference);
+        [Get("/maps/api/place/photo?maxwidth={maxWidth}&maxheight={maxHeight}&photoreference={photoReference}&key={apiKey}")]
+        Task<Stream> GetPhotoAsync(string apiKey, string photoReference, int maxWidth, int maxHeight);
     }
 }

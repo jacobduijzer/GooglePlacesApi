@@ -60,19 +60,19 @@ namespace GooglePlacesApi
             switch (detailLevel)
             {
                 case DetailLevel.Basic:
-                    fields = "id,place_id,name,geometry,formatted_address,reference,icon,address_components,adr_address,types,photos,plus_code,scope,url,utc_offset,vicinity,permanently_closed";
+                    fields = Constants.REQUEST_FIELDS_BASIC;
                     break;
 
                 case DetailLevel.Contact:
-                    fields = "id,place_id,name,geometry,formatted_address,reference,icon,address_components,adr_address,types,photos,plus_code,scope,url,utc_offset,vicinity,permanently_closed,formatted_phone_number,international_phone_number,opening_hours,website";
+                    fields = $"{Constants.REQUEST_FIELDS_BASIC},{Constants.REQUEST_FIELDS_CONTACT}";
                     break;
 
                 case DetailLevel.Atmosphere:
-                    fields = "id,place_id,name,geometry,formatted_address,reference,icon,address_components,adr_address,types,photos,plus_code,scope,url,utc_offset,vicinity,permanently_closed,price_level,rating,review,user_ratings_total";
+                    fields = $"{Constants.REQUEST_FIELDS_BASIC},{Constants.REQUEST_FIELDS_ATMOSPHERE}";
                     break;
 
                 case DetailLevel.Full:
-                    fields = "id,place_id,name,geometry,formatted_address,reference,icon,address_components,adr_address,types,photos,plus_code,scope,url,utc_offset,vicinity,permanently_closed,formatted_phone_number,international_phone_number,opening_hours,website,price_level,rating,review,user_ratings_total";
+                    fields = $"{Constants.REQUEST_FIELDS_BASIC},{Constants.REQUEST_FIELDS_CONTACT},{Constants.REQUEST_FIELDS_ATMOSPHERE}";
                     break;
             }
 
@@ -83,12 +83,18 @@ namespace GooglePlacesApi
             return result;
         }
 
-        public async Task<Stream> GetPhotoAsync(string photoReference)
+        public async Task<Stream> GetPhotoAsync(string photoReference, int maxWidth = 1600, int maxHeight = 1600)
         {
             if (string.IsNullOrWhiteSpace(photoReference))
                 throw new ArgumentNullException(nameof(photoReference));
 
-            Stream result = await _api.GetPhotoAsync(_settings.ApiKey, photoReference)
+            if (maxWidth > 1600)
+                throw new InvalidDataException("maxWidth parameter invalid: value expected between 1 and 1600");
+
+            if (maxHeight > 1600)
+                throw new InvalidDataException("maxHeight parameter invalid: value expected between 1 and 1600");
+
+            Stream result = await _api.GetPhotoAsync(_settings.ApiKey, photoReference, maxWidth, maxHeight)
                              .ConfigureAwait(false);
 
             return result;

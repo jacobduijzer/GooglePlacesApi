@@ -42,7 +42,7 @@ namespace GooglePlacesApi.Models
         public List<Photo> Photos { get; set; }
 
         [JsonProperty("plus_code")]
-        public PlusCode Pluscode { get; set; }
+        public PlusCode PlusCode { get; set; }
         
         [JsonProperty("scope")]
         public string Scope { get; set; }
