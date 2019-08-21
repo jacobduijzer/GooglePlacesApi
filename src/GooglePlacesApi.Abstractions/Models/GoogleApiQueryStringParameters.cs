@@ -20,7 +20,6 @@ namespace GooglePlacesApi.Models
         [AliasAs("sessiontoken")]
         public string SessionToken { get; set; }
 
-        //[AliasAs("offset")]
         public int Offset { get; set; }
 
         [AliasAs("origin")]
@@ -29,10 +28,8 @@ namespace GooglePlacesApi.Models
         [AliasAs("location")]
         public string Location { get; set; }
 
-        //[AliasAs("radius")]
         public int Radius { get; set; }
 
-        //[AliasAs("strictbounds")]
         public bool StrictBounds { get; set; }
     }
 }
