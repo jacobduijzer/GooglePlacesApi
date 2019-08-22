@@ -8,7 +8,9 @@
                      Margin="20, 40, 20, 20">
 
             <Image Source="{Binding Details.Place.Icon}"/>
-            
+
+            <Image Source="{Binding PlacePhoto}" />
+
             <Label Text="{Binding Details.Place.Name, StringFormat='Name: {0}'}"/>
             <Label Text="{Binding Details.Place.Geometry.Location.Latitude, StringFormat='Latitude: {0}'}"/>
             <Label Text="{Binding Details.Place.Geometry.Location.Longitude, StringFormat='Longitude: {0}'}"/>

@@ -56,7 +56,7 @@ namespace GooglePlacesApi.Tests.IntegrationTests
             var predictions = await service.GetPredictionsAsync("new y")
                                            .ConfigureAwait(false);
 
-            var details = await service.GetDetailsAsync(predictions.Items.FirstOrDefault().PlaceId)
+            var details = await service.GetDetailsAsync(predictions.Items.FirstOrDefault().PlaceId, service.GetSessionToken())
                                        .ConfigureAwait(false);
 
             details.Should()

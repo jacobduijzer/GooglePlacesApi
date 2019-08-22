@@ -36,8 +36,8 @@ namespace StoreLocator.ViewModels
 
             _storeRepository = new StoreRepository();
 
-            TaskCompletion = NotifyTaskCompletion.Create(GetLocationAndStoresAsync);
-
+            Task.Run(async () => await GetLocationAndStoresAsync());
+            
             SetupObservables();
         }
 
@@ -45,7 +45,12 @@ namespace StoreLocator.ViewModels
         {
             try
             {
-                var location = await Geolocation.GetLastKnownLocationAsync();
+                var location = Geolocation.GetLastKnownLocationAsync().Result;
+
+                if (location == null)
+                {
+                    location = await Geolocation.GetLocationAsync();
+                }
 
                 if (location != null)
                 {
@@ -55,7 +60,13 @@ namespace StoreLocator.ViewModels
                                              .Select(x => new PresentableStore(x, location.Latitude, location.Longitude))
                                              .ToList();
                 }
-                    
+                else
+                {
+                    Stores = _storeRepository.GetAll().OrderBy(x => x.Name)
+                                                 .Select(x => new PresentableStore(x))
+                                                 .ToList();
+                }
+
             }
             catch (Exception ex)
             {
@@ -66,9 +77,7 @@ namespace StoreLocator.ViewModels
 
 
         }
-
-        public INotifyTaskCompletion TaskCompletion;
-
+                
         public ICommand SelectGoogleItemCommand
         => new Command<Prediction>(async (Prediction item) => await DoSelectItem(item).ConfigureAwait(false));
 
@@ -180,7 +189,7 @@ namespace StoreLocator.ViewModels
             _searchText = item.Description;
             OnPropertyChanged("SearchText");
 
-            var details = await _api.GetDetailsAsync(item.PlaceId)
+            var details = await _api.GetDetailsAsync(item.PlaceId, _api.GetSessionToken())
                                     .ConfigureAwait(false);
 
             if(details != null)

@@ -48,7 +48,7 @@ namespace GooglePlacesApi.Tests.UnitTests.Service
         public void ThrowWhenPlaceIdIsNullOrEmpty(string input)
         {
             var service = new GooglePlacesApiService(GoogleApiSettings.Builder.WithApiKey("testkey").Build());
-            var action = new Func<Task>(async () => await service.GetDetailsAsync(input));
+            var action = new Func<Task>(async () => await service.GetDetailsAsync(input, service.GetSessionToken()));
             action.Should()
                   .Throw<ArgumentNullException>()
                   .WithMessage($"Value cannot be null.{Environment.NewLine}Parameter name: placeId");

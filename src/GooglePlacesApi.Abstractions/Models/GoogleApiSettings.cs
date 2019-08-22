@@ -17,6 +17,20 @@ namespace GooglePlacesApi.Models
 
         public IRefitLogger Logger { get; private set; }
 
+        public DetailLevel DetailLevel { get; private set; }
+
+        public string SessionToken { get; set; } 
+
+        public int Offset { get; private set; }
+
+        public string Origin { get; private set; }
+
+        public string Location { get; private set; }
+
+        public int Radius { get; private set; }
+
+        public bool StrictBounds { get; private set; } = false;
+
         private GoogleApiSettings()
         {
         }
@@ -29,7 +43,14 @@ namespace GooglePlacesApi.Models
         {
             private string _apiKey;
             private string _language;
+            private string _sessionToken;
+            private int _offset;
+            private string _origin;
+            private string _location;
+            private int _radius;
+            private bool _strictBounds;
             private PlaceTypes _type;
+            private DetailLevel _detailLevel;
             private readonly List<string> _countries = new List<string>();
             private IRefitLogger _logger;
 
@@ -56,7 +77,47 @@ namespace GooglePlacesApi.Models
                 _type = type;
                 return this;
             }
+            public SettingsBuilder WithDetailLevel(DetailLevel detailLevel)
+            {
+                _detailLevel = detailLevel;
+                return this;
+            }
 
+            public SettingsBuilder WithSessionToken(string sessionToken)
+            {
+                _sessionToken = sessionToken;
+                return this;
+            }
+
+            public SettingsBuilder WithOffset(int offset)
+            {
+                _offset = offset;
+                return this;
+            }
+
+            public SettingsBuilder WithOrigin(string origin)
+            {
+                _origin = origin;
+                return this;
+            }
+
+            public SettingsBuilder WithLocation(string location)
+            {
+                _location = location;
+                return this;
+            }
+
+            public SettingsBuilder WithRadius(int radius)
+            {
+                _radius = radius;
+                return this;
+            }
+
+            public SettingsBuilder WithStrictBounds(bool strictBounds)
+            {
+                _strictBounds = strictBounds;
+                return this;
+            }
 
             public SettingsBuilder AddCountry(string country)
             {
@@ -90,7 +151,14 @@ namespace GooglePlacesApi.Models
                     Language = _language,
                     PlaceType = _type,
                     Countries = _countries,
-                    Logger = _logger
+                    Logger = _logger,
+                    DetailLevel = _detailLevel,
+                    SessionToken = _sessionToken,
+                    Offset = _offset,
+                    Origin = _origin,
+                    Location = _location,
+                    Radius = _radius,
+                    StrictBounds = _strictBounds
                 };
             }
         }
