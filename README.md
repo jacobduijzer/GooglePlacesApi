@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/o8vur836rgftafau/branch/master?svg=true)](https://ci.appveyor.com/project/jacobduijzer/googleplacesapi-exe2x/branch/master) [![download](https://img.shields.io/nuget/v/GooglePlacesApi)](https://www.nuget.org/packages/GooglePlacesApi/) [![CodeFactor](https://www.codefactor.io/repository/github/jacobduijzer/googleplacesapi/badge)](https://www.codefactor.io/repository/github/jacobduijzer/googleplacesapi)
+
 # GooglePlacesApi
 
 This plugin makes it very easy to use the Google Places API. Please read Jacob Duijzer's [blog](https://blog.duijzer.com/posts/google-places-api/) for the nitty-gritty details.
